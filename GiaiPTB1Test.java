@@ -4,6 +4,7 @@ import org.junit.Test;
 
 
 public class GiaiPTB1Test {
+	
 	private GiaiPTB1 giaiPTB1 = new GiaiPTB1();
 	
 	@Test
@@ -15,5 +16,4 @@ public class GiaiPTB1Test {
 	public void test2() {
 		assertEquals("",9, giaiPTB1.test(-10, 90));
 	}
-
 }
