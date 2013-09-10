@@ -5,10 +5,6 @@ import org.junit.Test;
 
 public class GiaiPTB1Test {
 	private GiaiPTB1 giaiPTB1 = new GiaiPTB1();
-	/*@Test
-	public void test() {
-		fail("Not yet implemented");
-	}*/
 	
 	@Test
 	public void test1() {
