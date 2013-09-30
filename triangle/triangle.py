@@ -22,7 +22,7 @@ def toNumber(val):
         return val
 
 #---------------------------------
-# define function detect_triangle: check 3 edge of triangle 
+# define function classifyTriangle: check 3 edge of triangle 
 def detect_triangle(a , b , c ):
     
     a = toNumber(a)
