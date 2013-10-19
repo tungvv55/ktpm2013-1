@@ -9,7 +9,7 @@ import unittest
 import collections
 import itertools
 
-# lay gia tri trong docstring
+# Lay gia tri trong docstring day vao mang
 def getValue():
     a = main.__doc__
     b = a.split('\n')
@@ -23,6 +23,7 @@ def getValue():
         
     array.pop(len(array) -1 )
     return array
+
 
 def sort_input(arr):
     for i in range(len(arr)):
