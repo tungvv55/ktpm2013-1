@@ -1,0 +1,44 @@
+﻿*** Settings ***
+Documentation     A test suite with a single test for valid login.
+...
+...               This test has a workflow that is created using keywords in
+...               the imported resource file.
+Suite Setup       Open Browser To Login Page
+Suite Teardown
+Test Setup        Go To Trường Nhà
+Test Template     Valid Login And Insert Student
+Resource          resource.txt
+
+*** Test Cases ***    Last Name    First Name    Birthday      Phone Number    Sex    Nation    Address    Father Name    Mother Name    Birth Place
+Empty Last Name       ${EMPTY}     Hoa           02/01/1996    0904601609      Nam    Kinh      Ha Noi     Hoang          Hue            ha noi
+                      Hoàng        ${EMPTY}      01/01/1996    0904601609      Nữ     Kinh      Ha Noi     Hoang          Lan            Hà Nội
+                      Đinh         Thúy          32/01/1996    0433656684      Nữ     Tày       Hà Nam     Hoàng          Huệ            Hà Nội
+
+*** Keywords ***
+Valid Login And Insert Student
+    [Arguments]    ${last_name}    ${first_name}    ${birthday}    ${sms_phone}    ${sex}    ${nation}
+    ...    ${current_address}    ${father_name}    ${mother_name}    ${birth_place}
+    [Timeout]
+    Input Username    nhom6
+    Input Password    nhom6
+    Submit Credentials
+    Trường Nhà - Nhom6 Should Be Open
+    Click View Class
+    Trường Nhà - Nhom6 View Class Detail
+    Click Students List Menu
+    Choice Insert Students
+    Trường Nhà - Nhom6 Insert Students In Class
+    Input Last Name    ${last_name}
+    Input First Name    ${first_name}
+    Input Birthday    ${birthday}
+    Input Phone Number    ${sms_phone}
+    Input Sex    ${sex}
+    Input Nation    ${nation}
+    Input Address    ${current_address}
+    Input Father Name    ${father_name}
+    Input Mother Name    ${mother_name}
+    Input Birth Place    ${birth_place}
+    Click Button Them
+    Click Button Logout
+    Home Page Trường Nhà
+    Click Button Login On Home

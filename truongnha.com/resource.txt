@@ -1,0 +1,137 @@
+﻿*** Settings ***
+Documentation     A resource file with reusable keywords and variables.
+...
+...               The system specific keywords created here form our own
+...               domain specific language. They utilize keywords provided
+...               by the imported Selenium2Library.
+Library           Selenium2Library
+
+*** Variables ***
+${SERVER}         truongnha.com
+${BROWSER}        Firefox
+${DELAY}          0
+${VALID USER}     nhom6
+${VALID PASSWORD}    nhom6
+${LOGIN URL}      http://${SERVER}/login/
+${WELCOME URL}    http://${SERVER}/school/
+${ERROR URL}      http://${SERVER}/login/
+${VIEW_CLASS_DETAIL URL}    http://${SERVER}/school/viewClassDetail/1370    # Danh sách lớp học
+${INSERT_STUDENT_CLASS URL}    http://${SERVER}/school/viewClassDetail/1370#
+${FORM SUBMITTED}    http://${SERVER}/school/viewClassDetail/1370#
+
+*** Keywords ***
+Open Browser To Login Page
+    Open Browser    ${LOGIN URL}    ${BROWSER}
+    Maximize Browser Window
+    Set Selenium Speed    ${DELAY}
+    Trường Nhà Should Be Open
+
+Trường Nhà Should Be Open
+    Title Should Be    Trường Nhà
+
+Go To Trường Nhà
+    Go To    ${LOGIN URL}
+    Trường Nhà Should Be Open
+
+Input Username
+    [Arguments]    ${username}
+    Input Text    id_username    ${username}
+
+Input Password
+    [Arguments]    ${password}
+    Input Text    id_password    ${password}
+
+Submit Credentials
+    Click Button    login
+
+Trường Nhà - Nhom6 Should Be Open
+    Location Should Be    ${WELCOME URL}
+    Title Should Be    Trường Nhà - Nhom6
+
+Click View Class
+    Click Link    1370
+
+Choice Insert Students
+    Click Element    add-student
+
+Trường Nhà - Nhom6 View Class Detail
+    Location Should Be    ${VIEW_CLASS_DETAIL URL}
+    Title Should Be    Trường Nhà - Nhom6
+
+Click Students List Menu
+    Click Element    student-list-menu
+
+Trường Nhà - Nhom6 Insert Students In Class
+    Go To    ${INSERT_STUDENT_CLASS URL}
+    Title Should Be    Trường Nhà - Nhom6
+
+Input Last Name
+    [Arguments]    ${last_name}
+    Input Text    id_last_name    ${last_name}
+
+Input First Name
+    [Arguments]    ${first_name}
+    Input Text    id_first_name    ${first_name}
+
+Input Phone Number
+    [Arguments]    ${sms_phone}
+    Input Text    id_sms_phone    ${sms_phone}
+
+Input Sex
+    [Arguments]    ${sex}
+    Select From List    id_sex    ${sex}
+
+Input Birthday
+    [Arguments]    ${birthday}
+    Input Text    id_birthday    ${birthday}
+
+Input Nation
+    [Arguments]    ${nation}
+    Input Text    id_dan_toc    ${nation}
+
+Input Address
+    [Arguments]    ${current_address}
+    Input Text    id_current_address    ${current_address}
+
+Input Father Name
+    [Arguments]    ${father_name}
+    Input Text    id_father_name    ${father_name}
+
+Input Mother Name
+    [Arguments]    ${mother_name}
+    Input Text    id_mother_name    ${mother_name}
+
+Input Birth Place
+    [Arguments]    ${birth_place}
+    Input Text    id_birth_place    ${birth_place}
+
+Click Button Them
+    Click Button    add-student-submit
+    List Students On Trường Nhà
+
+List Students On Trường Nhà
+    Location Should Be    ${FORM SUBMITTED}
+    Title Should Be    Trường Nhà - Nhom6
+
+Click Button Import
+    Click Element    import
+
+Import File
+    Click Element    name[]
+
+Choose File My Computer
+    Choose File    my_file_upload    C:\Users\HoaHoang\Desktop\ds_hoc_sinh_10_A.xls
+
+Click Button Logout
+    Click Element    logout
+
+Home Page Trường Nhà
+    Location Should Be    http://${SERVER}/
+    Title Should Be    Trường Nhà
+
+Click Button Login On Home
+    Click Element    login
+
+Trường Nhà Should Be Logout
+    Go To    ${SERVER}
+    Title Should Be    Trường Nhà

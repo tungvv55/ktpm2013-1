@@ -1,0 +1,38 @@
+﻿*** Settings ***
+Documentation     A test suite with a single test for valid login.
+...
+...               This test has a workflow that is created using keywords in
+...               the imported resource file.
+Suite Setup       Open Browser To Login Page
+Suite Teardown    Close Browser
+Test Setup        Go To Trường Nhà
+Test Template     Valid Login
+Resource          resource.txt
+
+*** Test Cases ***    User Name        Password
+Lowercase Username    ${VALID USER}    ${VALID PASSWORD}
+
+Uppercase Username    NHOM6            ${VALID PASSWORD}
+
+One Letter Uppercase Username
+                      Nhom6            ${VALID PASSWORD}
+
+Uppercase Password    ${VALID USER}    NHOM6
+
+One Letter Uppercase Password
+                      ${VALID USER}    Nhom6
+
+Uppercase Username And Password
+                      NHOM6            NHOM6
+
+*** Keywords ***
+Valid Login
+    [Arguments]    ${username}    ${password}
+    Input Username    ${username}
+    Input Password    ${password}
+    Submit Credentials
+    Trường Nhà - Nhom6 Should Be Open
+    Click Button Logout
+    Trường Nhà Should Be Logout
+    Click Button Login On Home
+    Go To Trường Nhà
