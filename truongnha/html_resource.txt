@@ -1,0 +1,56 @@
+*** Settings ***
+
+Documentation  Chứa thông tin các keywords chính
+Library        Selenium2Library 	
+
+*** Variables ***
+${FIRST PAGE}	 http://truongnha.com/
+${LOGIN URL}     http://truongnha.com/login/
+${WELCOME URL}   http://truongnha.com/school/
+${ERROR URL}     http://truongnha.com/login/
+
+
+*** Keywords ***
+
+Open Browser To Login Page
+    Open Browser  ${LOGIN URL}  ff
+    Maximize Browser Window 
+    Title Should Be  Trường Nhà
+Go To Trường Nhà
+	Go To  ${LOGIN URL}
+    Title Should Be  Trường Nhà
+Auto Login
+	Set Selenium Speed  0
+	Input Text  id_username  nhom6
+    Input Text  id_password  nhom6
+    Click Button  login
+	Location Should Be  ${WELCOME URL}
+    Title Should Be  Trường Nhà - Nhom6
+Select Test Class
+	Set Selenium Speed  1
+    Click Element    1375
+Select List Menu
+	Set Selenium Speed  0
+	Click Element	student-list-menu
+Select process Add
+	Click Element	add-student
+Select process Delete
+	Click Element	delSelected
+Input Information
+	Input Text	id_last_name	${last_name}
+	Input Text	id_first_name	${first_name} 
+	Input Text	id_birthday		${birthday}
+	Input Text	id_sms_phone	${sms_phone}
+Add Student
+	Set Selenium Speed  1.5
+	Click Button    add-student-submit
+Auto Logout
+    Click Element   logout
+Login Should Have Failed
+    Location Should Be  ${ERROR URL}
+    Title Should Be  Trường Nhà
+Home Page Trường Nhà
+    Location Should Be	${FIRST PAGE}
+    Title Should Be    Trường Nhà
+
+

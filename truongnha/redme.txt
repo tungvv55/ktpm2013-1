@@ -1,17 +1,33 @@
-﻿I)Các thành viên nhóm 6:
+﻿/*****************************************************/
+I)Các thành viên nhóm 6:
 1. Nguyễn Văn Trình
 2. Hoàng Thị Hoa
 3. Đinh Thị Thúy
 4. Vũ Viết Tùng
 
-II) Các chức năng được kiểm thử
-1. Đăng nhập
-2. Thêm sinh viên
-
-III) Công cụ kiểm thử
+/*****************************************************/
+II) Công cụ kiểm thử, hướng dẫn cài đặt và chạy chương trình
 Robot Framework-robotframework.org. 
 Thư viện selenium2library
 
-IV) Hướng dẫn kiểm thử
-Sau khi cài đặt Robot Framework, trên màn hình Comand Line, gõ lệnh: pybot <đường dẫn tới thư mục đặt file test>
+
+*** Hướng dẫn cài đặt***
+1. Install Python (python-2.7.5) 
+URL: http://www.python.org/getit/
+
+2. Install wxPython 
+URL: http://sourceforge.net/projects/wxpython/?source=dlp
+
+Chú ý chọn version có hỗ trợ Unicode	
+
+3. Install easy-install0.8 hoặc PIP (hỗ trợ download các package của python)
+
+4. Install Robot framework: mở command line tại thư mục python và gõ lênh easy_install robotframework
+
+5. Install RIDE: mở command line tại thư mục python và gõ lênh easy_install robotframework-ride
+
+Sau khi cài đặt xong RIDE bạn có thể thực hành tạo testcase đc rồi. Nếu muốn sử dụng thư viện nào thì bạn download thư viện đó về (dùng PIP hoặc easy_install). Ví dụ easy_install robotframework-	selenium2library
+
+*** Cách chạy trương trình****
+   Sau khi cài đặt Robot Framework, trên màn hình Comand Line, gõ lệnh: pybot <đường dẫn tới thư mục đặt file test>
 VD: >pybot login_tests\valid_login.txt

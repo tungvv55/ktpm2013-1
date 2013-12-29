@@ -1,0 +1,33 @@
+﻿*** Settings ***
+
+Documentation  Test chức năng thêm học sinh vào lớp sai thông tin, với các test case:
+...				Sai ngày sinh, trống tên, sai SĐT,	Trống tất cả.				
+Suite Setup     Open Browser To Login Page	
+Test Setup      Go To Trường Nhà
+Test Template   Add invalid student
+Suite Teardown  Close Browser	
+Resource       	html_resource.txt
+*** Test Cases ***            Last Name    First Name    	Birthday      Phone Number    Sex 		  Nation
+Wrong Birthday		          ${EMPTY}     Tung         	02/01/199     01697005095	  Nam         Hà Nội
+Empty First Name              ${EMPTY}     ${EMPTY}         02/01/1996    0904601609      Nam	      Hà Nội
+Wrong Phone		              ${EMPTY}     Tung         	02/01/1996    0169700509      Nam         Hà Nội
+Empty All	                  ${EMPTY}     ${EMPTY}         ${EMPTY}      ${EMPTY}        Nam    ${EMPTY} 
+
+*** Keywords ***
+Add invalid student
+	[Arguments]    ${last_name}    ${first_name}    ${birthday}    ${sms_phone}  	${sex}		${nation}
+	[Timeout]
+	Auto Login
+	Select Test Class
+	Select List Menu
+	Select process Add
+	Select From List    id_sex    ${sex}
+	Input Information
+	Input Text    id_dan_toc    ${nation}
+	Set Selenium Speed  3
+	Add Student	
+	Page Should Contain Element	xpath=//div[@id='notify']/ul/li
+	Set Selenium Speed  3
+	Auto Logout
+	Home Page Trường Nhà
+	

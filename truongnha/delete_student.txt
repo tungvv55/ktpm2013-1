@@ -1,0 +1,42 @@
+﻿*** Settings ***
+
+Documentation  Test chức năng xóa học sinh của chương trình với các Test
+...				Chọn 1 học sinh để xóa, Chọn tất car học sinh để xóa ,
+...				Không chọn học sinh nào và xóa
+Suite Setup     Open Browser To Login Page	
+Test Setup      Go To Trường Nhà
+Suite Teardown  Close Browser	
+Resource       	html_resource.txt
+*** Test Cases ***	
+Delete 1 Students
+	Auto Login
+	Select Test Class
+	Click Element	 xpath=//table[@id='student-table']/tbody/tr[1]/td[2]
+	Select List Menu
+	Select process Delete
+	Set Selenium Speed  3
+	Confirm Action	
+	Page Should Contain Element	xpath=//div[@id='notify']['Đã xóa xong']
+	Auto Logout
+	Home Page Trường Nhà
+Delete All Students
+	Auto Login
+	Select Test Class
+	Click Element	checkbox_all
+	Select List Menu
+	Select process Delete
+	Set Selenium Speed  3
+	Confirm Action	
+	Page Should Contain Element	xpath=//div[@id='notify']['Đã xóa xong']
+	Auto Logout
+	Home Page Trường Nhà
+Delete 0 Students
+	Auto Login
+	Select Test Class
+	Select List Menu
+	Select process Delete
+	Set Selenium Speed  3
+	Alert Should Be Present	Hãy chọn ít nhất một học sinh để xoá.
+	Auto Logout
+	Home Page Trường Nhà
+	

@@ -136,3 +136,17 @@ Trường Nhà Should Be Logout
     Title Should Be    Trường Nhà
 
 
+***Delete Student***
+Choose Student Delete
+    Select Checkbox	checkbox_27951
+
+Click Delete Student
+    Click Link	delete
+
+Click Confirm
+    Choose Ok On Next Confirmation
+
+Check
+    Confirm Action
+
+

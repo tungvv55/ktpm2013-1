@@ -1,0 +1,30 @@
+﻿*** Settings ***
+
+Documentation  A test suite with a single test for valid login. This test has
+...            a workflow that is created using keywords from the resource file.
+Suite Setup     Open Browser To Login Page	
+Test Setup      Go To Trường Nhà
+Test Template   Login With Invalid Credentials Should Fail
+Suite Teardown  Close Browser	
+Resource       	html_resource.txt
+*** Test Cases ***            Last Name    First Name    	Birthday      Phone Number    	    	
+Add Vu Tung               	  ${EMPTY}	   Tung         	01/01/1996    01697005095          
+    
+
+*** Keywords ***
+Login With Invalid Credentials Should Fail
+	[Arguments]    ${last_name}    ${first_name}    ${birthday}    ${sms_phone}  
+	[Timeout]
+	Auto Login
+	Select Test Class
+	Click Element	student-list-menu
+	Select process Add
+	Input Information
+	Add Student	
+	Input Information
+	Select From List    id_sex    Nữ
+	Add Student	
+	Page Should Contain Element	xpath=//div[@id='notify']['<li> Học sinh đã tồn tại</li>']
+	Click Element   logout
+	Home Page Trường Nhà
+	
