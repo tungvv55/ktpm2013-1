@@ -46,8 +46,8 @@ Số lượng các chức năng kiểm thử: 3
 +failed: 3 (Trường password phân biệt chư hoa chư thường)
 
 **************Chức năng them sinh vien****
-- Số lượng test case: 7
-+ passed: 6
+- Số lượng test case: 14
++ passed: 13
 + failed: 1 (trường hợp 2 sinh viên trùng tên, ngày sinh nhưng giới tính khác nhau)
 
 ************Chức năng xóa sinh viên**************
