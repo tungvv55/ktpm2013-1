@@ -31,3 +31,39 @@ Sau khi cài đặt xong RIDE bạn có thể thực hành tạo testcase đc r�
 *** Cách chạy trương trình****
    Sau khi cài đặt Robot Framework, trên màn hình Comand Line, gõ lệnh: pybot <đường dẫn tới thư mục đặt file test>
 VD: >pybot login_tests\valid_login.txt
+
+/***************************************************/
+III) Các chức năng kiểm thử
+Số lượng các chức năng kiểm thử: 3
+1) Chức năng đăng nhập
+2) Chức năng thêm sinh viên
+3) Chưc năng xóa sinh viên 
+
+
+************Chức năng đăng nhập************
+- Số lượng test case: 12
++passed: 9
++failed: 3 (Trường password phân biệt chư hoa chư thường)
+
+**************Chức năng them sinh vien****
+- Số lượng test case: 7
++ passed: 6
++ failed: 1 (trường hợp 2 sinh viên trùng tên, ngày sinh nhưng giới tính khác nhau)
+
+************Chức năng xóa sinh viên**************
+- Số lượng test case: 3
++ passed: 3
++ failed: 0
+
+/**************************************************/
+IV) Các lỗi phát hiện mà không làm được test
+- Khi nhập file excel danh sách học sinh trong lớp tại trường "Giới tính"
++ Nếu người dùng nhập kí tự "N" mặc định vào danh sách trên lớp sẽ là Nam
+
+/**************************************************/
+V) Khó khăn khi làm bài tập
+- Phần nhập file excel nhóm em chưa tìm đươc command nên chưa viết test case
+
+/*************************************************/
+VI) Các góp ý cho hệ thống
+- Website nên thiết kế riêng phần giao diện tải file mẫu dễ dàng cho người dùng tải về sử dụng
