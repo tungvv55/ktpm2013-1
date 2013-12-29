@@ -14,7 +14,7 @@ Số lượng các chức năng kiểm thử: 3
 **************Chức năng them sinh vien****
 - Số lượng test case: 7
 + passed: 6
-+ failed: 1 (trường hợp sinh viên nam và sinh viên nữ trùng tên và ngày tháng năm sinh)
++ failed: 1 (trường hợp 2 sinh viên trùng tên, ngày sinh nhưng giới tính khác nhau)
 
 ************Chức năng xóa sinh viên**************
 - Số lượng test case: 3
