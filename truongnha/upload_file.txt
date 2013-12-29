@@ -1,0 +1,34 @@
+*** Settings ***
+
+Documentation  Test chức năng Upload file thông tin lớp học
+Suite Setup     Open Browser To Login Page	
+Test Setup      Go To Trường Nhà
+Suite Teardown  Close Browser	
+Resource       	html_resource.txt
+*** Test Cases ***	
+Add New Students
+	Auto Login
+	Select Test Class
+	Select List Menu
+	Set Selenium Speed  3
+	Click Element	import
+	Choose File	 xpath=//input[@name='files[]']	${CURDIR}${/}B.xls
+	Set Selenium Speed  3
+	Click Element 	xpath=//td[@class='start']/button[@class='btn btn-primary']
+	Page Should Contain Element	xpath=//div[@id='errorDetail']/ul['Bạn đã nhập thành công 2/2 học sinh.']
+	Click Element	upload-modal-exit
+	Auto Logout
+Update Student
+	Auto Login
+	Select Test Class
+	Select List Menu
+	Set Selenium Speed  3
+	Click Element	import
+	Choose File	 xpath=//input[@name='files[]']	${CURDIR}${/}B1.xls
+	Set Selenium Speed  3
+	Click Element 	xpath=//td[@class='start']/button[@class='btn btn-primary']
+	Page Should Contain Element	xpath=//div[@id='errorDetail']/ul/li['Có 2 học sinh không được nhập do đã tồn tại trong hệ thống. Trong đó có 2 học sinh thuộc lớp này. ']
+	Click Element	update_existing
+	Page Should Contain Element	xpath=//a[@id='update_existing']['Đã cập nhật 2 học sinh.']
+	Click Element	upload-modal-exit
+	Auto Logout
